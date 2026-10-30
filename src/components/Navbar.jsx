@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ShieldCheck, Menu, X, PhoneCall, MessageSquare } from 'lucide-react';
+import { ShieldCheck, Menu, X, MessageSquare } from 'lucide-react';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -45,8 +45,8 @@ export default function Navbar() {
     }
   };
 
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971558443362&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
-  const phoneUrl = "tel:+971558443362";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const phoneUrl = "tel:+971543656794";
 
   return (
     <nav className={`navbar glass-panel ${scrolled ? 'navbar-scrolled' : ''}`}>
@@ -75,7 +75,7 @@ export default function Navbar() {
         {/* Right Side CTAs */}
         <div className="navbar-ctas-desktop">
           <a href={phoneUrl} className="navbar-phone-link">
-            <span>📞 Call Now: +971 55 844 3362</span>
+            <span>📞 Call Now: +971 543656794</span>
           </a>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary navbar-wa-btn">
             <MessageSquare size={14} fill="currentColor" />
@@ -110,7 +110,7 @@ export default function Navbar() {
             
             <div className="mobile-ctas-wrapper">
               <a href={phoneUrl} className="mobile-phone-cta">
-                📞 Call Now: +971 55 844 3362
+                📞 Call Now: +971 543656794
               </a>
               <a
                 href={whatsappUrl}

@@ -2,8 +2,8 @@ import { Phone, MessageSquare } from 'lucide-react';
 import './FloatingActions.css';
 
 export default function FloatingActions() {
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971558443362&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
-  const phoneUrl = "tel:+971558443362";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const phoneUrl = "tel:+971543656794";
 
   return (
     <div className="floating-actions-container">

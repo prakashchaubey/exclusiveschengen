@@ -1,9 +1,9 @@
-import { ShieldCheck, Mail, Phone, Clock, Award, CheckSquare, Heart, MessageSquare } from 'lucide-react';
+import { ShieldCheck, Mail, Phone, Clock, Award, CheckSquare, MessageSquare } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer() {
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971558443362&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
-  const phoneUrl = "tel:+971558443362";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const phoneUrl = "tel:+971543656794";
 
   const handleLinkClick = (e, target) => {
     e.preventDefault();
@@ -78,11 +78,11 @@ export default function Footer() {
           <ul className="footer-contact-list">
             <li>
               <Phone size={14} className="contact-icon" />
-              <a href={phoneUrl} className="contact-link">Call: +971 55 844 3362</a>
+              <a href={phoneUrl} className="contact-link">Call: +971 543656794</a>
             </li>
             <li>
               <MessageSquare size={14} className="contact-icon wa-icon-style" />
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact-link wa-icon-style">WhatsApp: +971 55 844 3362</a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="contact-link wa-icon-style">WhatsApp: +971 543656794</a>
             </li>
             <li>
               <Mail size={14} className="contact-icon" />

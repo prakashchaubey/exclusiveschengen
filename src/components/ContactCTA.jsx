@@ -2,8 +2,8 @@ import { Phone, MessageSquare } from 'lucide-react';
 import './ContactCTA.css';
 
 export default function ContactCTA() {
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971558443362&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
-  const phoneUrl = "tel:+971558443362";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const phoneUrl = "tel:+971543656794";
 
   return (
     <div className="contact-cta-wrapper container">
@@ -15,7 +15,7 @@ export default function ContactCTA() {
         <div className="contact-cta-buttons">
           <a href={phoneUrl} className="btn btn-primary cta-call-btn">
             <Phone size={16} fill="currentColor" />
-            <span>Call +971 55 844 3362</span>
+            <span>Call +971 543656794</span>
           </a>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary cta-wa-btn">
             <MessageSquare size={16} fill="currentColor" className="wa-icon-color" />
