@@ -2,8 +2,8 @@ import { Phone, MessageSquare, ArrowRight, ShieldCheck, Star } from 'lucide-reac
 import './Hero.css';
 
 export default function Hero() {
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971558443362&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
-  const phoneUrl = "tel:+971558443362";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const phoneUrl = "tel:+971543656794";
 
   const handleConsultationClick = (e) => {
     e.preventDefault();
@@ -59,7 +59,7 @@ export default function Hero() {
             </a>
             <a href={phoneUrl} className="btn btn-secondary btn-lg">
               <Phone size={16} fill="currentColor" />
-              <span>Call +971 55 844 3362</span>
+              <span>Call +971 543656794</span>
             </a>
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg cta-wa-hero">
               <MessageSquare size={16} fill="currentColor" />

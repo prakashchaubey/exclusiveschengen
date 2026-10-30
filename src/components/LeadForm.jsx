@@ -1,27 +1,44 @@
 import { useState } from 'react';
-import { Phone, Mail, User, Send, CheckCircle2, MessageSquare, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, CheckCircle2, MessageSquare, ShieldCheck } from 'lucide-react';
 import './LeadForm.css';
 
 export default function LeadForm() {
   const accessKey = "3882dd81-49e0-4cc8-9387-342f969403b9";
 
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    travelTimeline: '',
+    travelPurpose: '',
+    consent: false
+  });
   const [status, setStatus] = useState({ submitting: false, success: false, error: null });
 
   const handleInputChange = (field, val) => {
     setFormData(prev => ({ ...prev, [field]: val }));
   };
 
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const phoneUrl = "tel:+971543656794";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.consent) {
+      setStatus({ submitting: false, success: false, error: "Please consent to contact via WhatsApp and phone to proceed." });
+      return;
+    }
     setStatus({ submitting: true, success: false, error: null });
 
     const payload = {
       access_key: accessKey,
       name: formData.name,
-      email: formData.email,
       phone: formData.phone,
-      subject: `ExclusiveSchengen Consultation Request – ${formData.name}`
+      email: formData.email,
+      travel_timeline: formData.travelTimeline,
+      travel_purpose: formData.travelPurpose,
+      whatsapp_consent: formData.consent ? "Yes" : "No",
+      subject: `ExclusiveSchengen Consultation Request – ${formData.name} (${formData.travelPurpose || 'General'})`
     };
 
     try {
@@ -35,8 +52,8 @@ export default function LeadForm() {
       if (response.ok && resData.success) {
         setStatus({ submitting: false, success: true, error: null });
         setTimeout(() => {
-          const msg = `Hello Exclusive Schengen, I submitted a consultation request. Name: ${formData.name}, Phone: ${formData.phone}. Please assist.`;
-          window.open(`https://api.whatsapp.com/send/?phone=971558443362&text=${encodeURIComponent(msg)}&type=phone_number&app_absent=0`, '_blank');
+          const msg = `Hello The Schengen, I need Schengen appointment help.`;
+          window.open(`https://api.whatsapp.com/send/?phone=+971543656794&text=${encodeURIComponent(msg)}&type=phone_number&app_absent=0`, '_blank');
         }, 1500);
       } else {
         throw new Error(resData.message || "Submission failed.");
@@ -46,16 +63,13 @@ export default function LeadForm() {
     }
   };
 
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971558443362&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
-  const phoneUrl = "tel:+971558443362";
-
   return (
     <section id="lead-form-section" className="lead-form-section section-padding">
       <div className="container">
-        <div className="lead-form-two-col glass-card">
+        <div className="lead-form-two-col">
 
           {/* LEFT COLUMN – Info Panel */}
-          <div className="lead-info-col">
+          <div className="lead-info-col glass-card">
             <span className="badge">Free Consultation</span>
             <h2 className="lead-info-title">Start Your Schengen Journey Today</h2>
             <p className="lead-info-para">
@@ -70,7 +84,7 @@ export default function LeadForm() {
                 </div>
                 <div>
                   <span className="lead-contact-label">Call or WhatsApp</span>
-                  <span className="lead-contact-value">+971 55 844 3362</span>
+                  <span className="lead-contact-value">+971 543656794</span>
                 </div>
               </a>
 
@@ -101,75 +115,115 @@ export default function LeadForm() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN – Form */}
+          {/* RIGHT COLUMN – Form Card */}
           <div className="lead-form-col">
             {!status.success ? (
               <form onSubmit={handleSubmit} className="lead-simple-form">
-                <h3 className="form-col-title">Request a Free Callback</h3>
-                <p className="form-col-sub">Complete the form and one of our consultants will contact you shortly.</p>
-
                 {status.error && (
                   <div className="form-error-alert">{status.error}</div>
                 )}
 
-                <div className="form-input-group">
-                  <label htmlFor="lead-name">Full Name *</label>
-                  <div className="input-field-wrapper">
-                    <User size={16} className="input-icon" />
-                    <input
-                      id="lead-name"
-                      type="text"
-                      required
-                      placeholder="e.g. John Doe"
-                      value={formData.name}
-                      onChange={(e) => handleInputChange('name', e.target.value)}
-                    />
-                  </div>
+                {/* Row 1: Full name */}
+                <div className="form-field-group">
+                  <label htmlFor="lead-name">Full name</label>
+                  <input
+                    id="lead-name"
+                    type="text"
+                    required
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                  />
                 </div>
 
-                <div className="form-input-group">
-                  <label htmlFor="lead-email">Email Address *</label>
-                  <div className="input-field-wrapper">
-                    <Mail size={16} className="input-icon" />
+                {/* Row 2: Mobile (WhatsApp) & Email */}
+                <div className="form-grid-row">
+                  <div className="form-field-group">
+                    <label htmlFor="lead-phone">Mobile (WhatsApp)</label>
+                    <input
+                      id="lead-phone"
+                      type="tel"
+                      required
+                      placeholder="05x xxx xxxx"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-field-group">
+                    <label htmlFor="lead-email">Email</label>
                     <input
                       id="lead-email"
                       type="email"
                       required
-                      placeholder="e.g. john@email.com"
+                      placeholder="you@email.com"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                     />
                   </div>
                 </div>
 
-                <div className="form-input-group">
-                  <label htmlFor="lead-phone">Mobile Number (with Country Code) *</label>
-                  <div className="input-field-wrapper">
-                    <Phone size={16} className="input-icon" />
-                    <input
-                      id="lead-phone"
-                      type="tel"
+                {/* Row 3: When do you plan to travel? & Purpose of travel */}
+                <div className="form-grid-row">
+                  <div className="form-field-group">
+                    <label htmlFor="lead-timeline">When do you plan to travel?</label>
+                    <select
+                      id="lead-timeline"
                       required
-                      placeholder="e.g. +971 55 844 3362"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
-                    />
+                      value={formData.travelTimeline}
+                      onChange={(e) => handleInputChange('travelTimeline', e.target.value)}
+                    >
+                      <option value="" disabled>Select</option>
+                      <option value="Within 30 days">Within 30 days</option>
+                      <option value="1–3 months">1–3 months</option>
+                      <option value="3–6 months">3–6 months</option>
+                      <option value="Flexible / Not decided yet">Flexible / Not decided yet</option>
+                    </select>
+                  </div>
+
+                  <div className="form-field-group">
+                    <label htmlFor="lead-purpose">Purpose of travel</label>
+                    <select
+                      id="lead-purpose"
+                      required
+                      value={formData.travelPurpose}
+                      onChange={(e) => handleInputChange('travelPurpose', e.target.value)}
+                    >
+                      <option value="" disabled>Select</option>
+                      <option value="Tourism & Leisure">Tourism & Leisure</option>
+                      <option value="Visiting Family or Friends">Visiting Family or Friends</option>
+                      <option value="Business & Meetings">Business & Meetings</option>
+                      <option value="Other Travel Purposes">Other Travel Purposes</option>
+                    </select>
                   </div>
                 </div>
 
+                {/* Row 4: WhatsApp & Phone Consent Checkbox */}
+                <div className="form-checkbox-row">
+                  <input
+                    type="checkbox"
+                    id="lead-consent"
+                    checked={formData.consent}
+                    onChange={(e) => handleInputChange('consent', e.target.checked)}
+                    required
+                  />
+                  <label htmlFor="lead-consent" className="form-checkbox-label">
+                    I agree to be contacted on WhatsApp and by phone about my enquiry.
+                  </label>
+                </div>
+
+                {/* Submit button */}
                 <button type="submit" className="btn btn-primary submit-btn-consult" disabled={status.submitting}>
                   {status.submitting ? (
                     <div className="form-spinner"></div>
                   ) : (
-                    <>
-                      <Send size={16} />
-                      <span>Request Consultation</span>
-                    </>
+                    <span>Request My Free Consultation</span>
                   )}
                 </button>
 
-                <p className="form-privacy-note">
-                  Your details are secure and will only be used to contact you regarding your enquiry.
+                {/* Disclaimer note */}
+                <p className="form-disclaimer-note">
+                  We are a private visa consultancy, not a government body. Approval rests solely with the relevant authority.
                 </p>
               </form>
             ) : (
@@ -183,7 +237,7 @@ export default function LeadForm() {
                 </p>
                 <p className="success-redirect-txt">Redirecting you to WhatsApp for instant assistance…</p>
                 <a
-                  href={`https://api.whatsapp.com/send/?phone=971558443362&text=${encodeURIComponent(`Hello Exclusive Schengen, I submitted a consultation request. Name: ${formData.name}, Phone: ${formData.phone}. Please assist.`)}&type=phone_number&app_absent=0`}
+                  href={`https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn wa-redirect-btn"

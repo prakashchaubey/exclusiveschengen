@@ -155,7 +155,7 @@ export function Process() {
     { num: "05", title: "Application Submission", desc: "Submit finalized dossiers on scheduled dates." }
   ];
 
-  const phoneUrl = "tel:+971558443362";
+  const phoneUrl = "tel:+971543656794";
 
   return (
     <section id="process-section" className="process-section-lp section-padding">
@@ -182,7 +182,7 @@ export function Process() {
 
         <div className="process-sub-cta text-center">
           <a href={phoneUrl} className="process-phone-banner">
-            📞 Need Help? Call +971 55 844 3362
+            📞 Need Help? Call +971 543656794
           </a>
         </div>
       </div>
@@ -327,8 +327,8 @@ export function Reviews() {
 
 // 8. Contact Section
 export function Contact() {
-  const phoneUrl = "tel:+971558443362";
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971558443362&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const phoneUrl = "tel:+971543656794";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
 
   return (
     <section id="contact-section" className="contact-details-section section-padding">
@@ -344,14 +344,14 @@ export function Contact() {
           <div className="glass-card contact-detail-card text-center">
             <Phone size={24} className="detail-icon" />
             <h3>Phone</h3>
-            <a href={phoneUrl} className="detail-value-link">+971 55 844 3362</a>
+            <a href={phoneUrl} className="detail-value-link">+971 543656794</a>
           </div>
 
           {/* WhatsApp Card */}
           <div className="glass-card contact-detail-card text-center">
             <MessageSquare size={24} className="detail-icon wa-icon-style" />
             <h3>WhatsApp</h3>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="detail-value-link wa-icon-style">+971 55 844 3362</a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="detail-value-link wa-icon-style">+971 543656794</a>
           </div>
 
           {/* Email Card */}
