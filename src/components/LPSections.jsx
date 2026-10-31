@@ -328,7 +328,7 @@ export function Reviews() {
 // 8. Contact Section
 export function Contact() {
   const phoneUrl = "tel:+971543656794";
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+ExclusiveSchengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
 
   return (
     <section id="contact-section" className="contact-details-section section-padding">

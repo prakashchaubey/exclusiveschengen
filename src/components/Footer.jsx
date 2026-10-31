@@ -2,7 +2,7 @@ import { ShieldCheck, Mail, Phone, Clock, Award, CheckSquare, MessageSquare } fr
 import './Footer.css';
 
 export default function Footer() {
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+ExclusiveSchengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
   const phoneUrl = "tel:+971543656794";
 
   const handleLinkClick = (e, target) => {

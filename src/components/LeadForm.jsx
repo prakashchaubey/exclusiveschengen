@@ -19,7 +19,7 @@ export default function LeadForm() {
     setFormData(prev => ({ ...prev, [field]: val }));
   };
 
-  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+ExclusiveSchengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0";
   const phoneUrl = "tel:+971543656794";
 
   const handleSubmit = async (e) => {
@@ -52,7 +52,7 @@ export default function LeadForm() {
       if (response.ok && resData.success) {
         setStatus({ submitting: false, success: true, error: null });
         setTimeout(() => {
-          const msg = `Hello The Schengen, I need Schengen appointment help.`;
+          const msg = `Hello The ExclusiveSchengen, I need Schengen appointment help.`;
           window.open(`https://api.whatsapp.com/send/?phone=+971543656794&text=${encodeURIComponent(msg)}&type=phone_number&app_absent=0`, '_blank');
         }, 1500);
       } else {
@@ -237,7 +237,7 @@ export default function LeadForm() {
                 </p>
                 <p className="success-redirect-txt">Redirecting you to WhatsApp for instant assistance…</p>
                 <a
-                  href={`https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+Schengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0`}
+                  href={`https://api.whatsapp.com/send/?phone=+971543656794&text=Hello+The+ExclusiveSchengen%2C+I+need+Schengen+appointment+help.&type=phone_number&app_absent=0`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn wa-redirect-btn"
